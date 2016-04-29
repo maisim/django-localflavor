@@ -227,7 +227,7 @@ class FRSIRENField(FRSIRENENumberMixin, CharField):
     }
 
     def prepare_value(self, value):
-        if value is None:
+        if value in EMPTY_VALUES:
             return value
         value = value.replace(' ', '').replace('-', '')
         return ' '.join((value[:3], value[3:6], value[6:]))
@@ -258,7 +258,7 @@ class FRSIRETField(FRSIRENENumberMixin, CharField):
         return ret
 
     def prepare_value(self, value):
-        if value is None:
+        if value in EMPTY_VALUES:
             return value
         value = value.replace(' ', '').replace('-', '')
         return ' '.join((value[:3], value[3:6], value[6:9], value[9:]))
